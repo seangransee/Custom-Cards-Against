@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+%html
+  %head
+    %title Custom Cards Against Humanity
+    :css
+      body {
+        font-family: Helvetica;
+        margin: 0;
+        padding: 0;
+      }
+
+      table{
+        border-collapse:collapse;
+        border-spacing:0;
+        page-break-after:always !important;
+        margin: 0;
+        padding: 0;
+      }
+
+      td {
+        border: 1px solid black;
+        width: 1.7in;
+        height: 1.65in;
+        padding: 0.15in;
+        font-weight: bold;
+        font-size: 19px;
+        line-height: 25px;
+        position: relative;
+        vertical-align: top;
+        margin: 0;
+      }
+
+      .gamename {
+        position: relative;
+        top: 1.44in;
+      }
+
+      .cardname {
+        position: relative;
+        bottom: 0.35in;
+        height: 1.3in;
+        overflow: hidden;
+      }
+
+      .gamename .text {
+        font-size: 8px;
+      }
+
+      .gamename img {
+        width: 25px;
+        position: relative;
+        top: 0.05in;
+      }
+
+  %body
+
+    - pages.each do |page|
+      %table
+        %tbody
+          - page.each do |row|
+            %tr
+              - row.each do |card|
+                %td
+                  .gamename
+                    %img{src: "http://i.imgur.com/0TeCujw.png"}
+                    %span.text= gamename
+                  .cardname= card
