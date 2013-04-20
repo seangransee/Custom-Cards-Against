@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 %html
   %head
-    %title Custom Cards Against Humanity
     :css
       body {
         font-family: Helvetica;
@@ -23,23 +22,23 @@
         height: 1.65in;
         padding: 0.15in;
         font-weight: bold;
-        font-size: 19px;
         line-height: 25px;
         position: relative;
         vertical-align: top;
         margin: 0;
       }
 
-      .gamename {
-        position: relative;
-        top: 1.44in;
-      }
-
       .cardname {
         position: relative;
-        bottom: 0.35in;
-        height: 1.3in;
         overflow: hidden;
+        height: 1.40in;
+        font-size: 18px;
+      }
+
+      .gamename {
+        height: 25px;
+        position: relative;
+        top: 4px;
       }
 
       .gamename .text {
@@ -52,38 +51,62 @@
         top: 0.05in;
       }
 
-      .black {
+      .set:nth-child(2) table {
         background-color: black;
         color: white;
         border: 1px solid white;
       }
 
-      .black td {
+      .set:nth-child(2) table td {
         border: 1px solid white;
+      }
+
+      .pick {
+        font-weight: bold;
+        font-size: 14px;
+        float: right;
+        position: relative;
+        top: 5px;
+      }
+
+      .pick .num {
+        background-color: white;
+        color: black;
+        border-radius: 22px;
+        height: 22px;
+        display: inline-block;
+        padding: 0 6px;
+      }
+
+      .line {
+        width: 150px;
+        display: inline-block;
+        border-bottom: 1px solid white;
+        margin-top: 18px;
+        margin-bottom: 0px;
       }
 
   %body
 
-    - white_cards.each do |page|
-      %table.white
-        %tbody
-          - page.each do |row|
-            %tr
-              - row.each do |card|
-                %td
-                  .gamename
-                    %img{src: "http://i.imgur.com/0TeCujw.png"}
-                    %span.text= gamename
-                  .cardname= card
-
-    - black_cards.each do |page|
-      %table.black
-        %tbody
-          - page.each do |row|
-            %tr
-              - row.each do |card|
-                %td
-                  .gamename
-                    %img{src: "http://i.imgur.com/0TeCujw.png"}
-                    %span.text= gamename
-                  .cardname= card
+    - cards.each do |set|
+      .set
+        - set.each do |page|
+          %table
+            %tbody
+              - page.each do |row|
+                %tr
+                  - row.each do |card|
+                    %td
+                      .cardname
+                        = card[:text]
+                      - if card[:blanks] > 1
+                        .pick
+                          PICK
+                          %span.num= card[:blanks]
+                        .gamename
+                          %img{src: "http://i.imgur.com/0TeCujw.png"}
+                          %span.text= abbr
+                      - else
+                        .gamename
+                          %img{src: "http://i.imgur.com/0TeCujw.png"}
+                          %span.text= gamename
