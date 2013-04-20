@@ -52,10 +52,32 @@
         top: 0.05in;
       }
 
+      .black {
+        background-color: black;
+        color: white;
+        border: 1px solid white;
+      }
+
+      .black td {
+        border: 1px solid white;
+      }
+
   %body
 
-    - pages.each do |page|
-      %table
+    - white_cards.each do |page|
+      %table.white
+        %tbody
+          - page.each do |row|
+            %tr
+              - row.each do |card|
+                %td
+                  .gamename
+                    %img{src: "http://i.imgur.com/0TeCujw.png"}
+                    %span.text= gamename
+                  .cardname= card
+
+    - black_cards.each do |page|
+      %table.black
         %tbody
           - page.each do |row|
             %tr

@@ -3,7 +3,8 @@ require 'pdfkit'
 require 'wkhtmltopdf-heroku' if production?
 
 def generatePages(list)
-  cards = list.map{|line| line.strip }.select{|line| !line.empty? }
+
+  cards = list.split("\r").map{|line| line.strip }.select{|line| !line.empty? }
 
   numRows = (cards.length / 4.0).ceil
   pages = []
@@ -28,15 +29,19 @@ post '/cards.pdf' do
 
   content_type 'application/pdf'
 
-  list = request['cards'].split("\r")
   name = request['gamename']
+  white_cards = generatePages(request['white_cards'])
+  black_cards = generatePages(request['black_cards'])
 
-  html = haml :cards, :locals => {:pages => generatePages(list),
+  html = haml :cards, :locals => {:white_cards => white_cards,
+                                  :black_cards => black_cards,
                                   :gamename => name}
+
   pdf = PDFKit.new(html, page_size: 'Letter',
                          margin_top: '0.5in',
                          margin_bottom: '0.5in',
                          margin_left: '0.25in',
                          margin_right: '0.25in').to_pdf
   pdf
+
 end
