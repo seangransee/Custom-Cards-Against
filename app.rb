@@ -18,6 +18,8 @@ post '/cards.pdf' do
     ]
   }
 
+  #return html
+
   content_type 'application/pdf'
 
   PDFKit.new(html, page_size: 'Letter',

@@ -1,24 +1,18 @@
 class String
+
   def count_blanks
-
     (self.scan /_+/).length
-
   end
 
   def uniform_length_blanks
-
     self.gsub /_+/, "<span class='line'></span>"
-
   end
 
   def abbreviate
-
     self.split(" ").map{|word| word[0].upcase}.join("")
-
   end
 
   def generatePages(color)
-
     cards = self.split("\r").map{|line| line.strip }.select{|line| !line.empty? }
 
     numRows = (cards.length / 4.0).ceil
@@ -46,8 +40,7 @@ class String
       pages[i / 5].push(row)
     end
 
-    puts pages
     return pages
-
   end
+
 end
