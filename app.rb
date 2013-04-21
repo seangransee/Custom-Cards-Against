@@ -7,7 +7,7 @@ get '/' do
   haml :index
 end
 
-post '/cards.pdf' do
+post '/cards.:ext' do
 
   html = haml :cards, :locals => {
     gamename: request['gamename'],
@@ -18,14 +18,20 @@ post '/cards.pdf' do
     ]
   }
 
-  #return html
+  if params[:ext] == "html"
 
-  content_type 'application/pdf'
+    return html
 
-  PDFKit.new(html, page_size: 'Letter',
-                         margin_top: '0.5in',
-                         margin_bottom: '0.5in',
-                         margin_left: '0.25in',
-                         margin_right: '0.25in').to_pdf
+  elsif params[:ext] == "pdf"
+
+    content_type 'application/pdf'
+
+    return PDFKit.new(html, page_size: 'Letter',
+                            margin_top: '0.5in',
+                            margin_bottom: '0.5in',
+                            margin_left: '0.25in',
+                            margin_right: '0.25in').to_pdf
+
+  end
 
 end

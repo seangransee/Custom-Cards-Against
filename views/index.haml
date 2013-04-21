@@ -2,22 +2,27 @@
 %html
   %head
     %title Custom Cards Against Humanity Generator
-
-    :css
-      .cards {
-        height: 500px;
-        width: 250px;
-      }
+    %link{rel: "stylesheet", type: "text/css", href: "/reset.css"}
+    %link{rel: "stylesheet", type: "text/css", href: "/page_styles.css"}
+    %script{src:"//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"}
 
   %body
 
-    %h2 Welcome to Sean's super simple custom Cards Against Humanity generator that looks like shit but gets the job done and now works for both white and black cards.
+    .top
+      %h1 Custom Cards Against
+      %h2 Make your own cards against humanity game
 
-    %form{method: "POST", action: "/cards.pdf"}
-      %h3 What's the name of your game?
-      %input{name: "gamename", class: "gamename"}
-      %h3 Paste in your white cards.
-      %textarea{name: "white_cards", class: "cards"}
-      %h3 Paste in your black cards.
-      %textarea{name: "black_cards", class: "cards"}
-      %input{type: "submit", value: "Get the cards!"}
+    .left
+      %form{method: "POST", action: "/cards.pdf", id: "cardsform"}
+        %h3 What's the name of your game?
+        %input{name: "gamename", class: "gamename placeholder"}
+        %h3 Paste in your white cards.
+        %textarea{name: "white_cards", class: "cards placeholder"}
+        %h3 Paste in your black cards.
+        %textarea{name: "black_cards", class: "cards placeholder"}
+        %input{type: "submit", value: "Get the cards!"}
+
+    .right
+
+    %script{src:"http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"}
+    %script{src:"/main.js"}
