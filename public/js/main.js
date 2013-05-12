@@ -94,15 +94,20 @@ $(document).ready(function() {
   updatePreview();
   resizePreview();
 
-});
-
-$(window).resize(resizePreview);
-
-$(document).keypress(
+  $('.name').keypress(
     function(event){
      if (event.which == '13') {
         event.preventDefault();
       }
+  });
 
+});
 
+$(window).resize(resizePreview);
+
+$('.name').keypress(
+    function(event){
+     if (event.which == '13') {
+        event.preventDefault();
+      }
 });
