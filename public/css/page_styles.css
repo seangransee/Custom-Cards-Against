@@ -1,0 +1,102 @@
+body {
+  font-family: sans-serif;
+}
+
+.cards {
+  height: 200px;
+  width: 250px;
+}
+
+.top h1 {
+  font-size: 40px;
+  text-transform: uppercase;
+  margin-bottom: 0px;
+}
+
+.top h2 {
+  text-transform: uppercase;
+  font-size: 20px;
+  color: #95A5A6;
+  margin-top: 0;
+}
+
+.left {
+  float: left;
+  width: 548px;
+  margin-left: 20px;
+}
+
+.set:nth-child(2) table {
+  background-color: white !important;
+  color: black !important;
+  border: 1px solid black !important;
+  background: url('/img/lightpaperfibers.png');
+}
+
+.set:nth-child(2) table td {
+  border: 1px solid black !important;
+}
+
+.set:nth-child(3) table {
+  background-color: black;
+  background: url('/img/asfalt.png');
+  color: #fcfbf9;
+  border: 1px solid white;
+}
+
+.set:nth-child(3) table td {
+  border: 1px solid white;
+}
+
+.placeholder {
+  color: #AAA;
+}
+
+.right {
+  float: left;
+  height: 100%;
+  overflow: scroll;
+  margin: 10px;
+  padding: 10px;
+}
+
+.right .set table {
+  margin-bottom: 20px;
+}
+
+.right img {
+  vertical-align: inherit;
+}
+
+.name {
+  width: 215px;
+}
+
+.pastecards {
+  float: left;
+  margin-bottom: 5px;
+}
+
+.pastecards.first {
+  margin-right: 20px;
+}
+
+.namethegame {
+  clear: both;
+  margin-bottom: 10px;
+}
+
+body {
+  background: url('/img/fabric_of_squares_gray.png');
+}
+
+.right {
+  transform-origin: top left;
+  transform: scale(0.75, 0.75);
+}
+
+.seperator {
+  border-bottom: 2px solid #ECF0F1;
+  clear: both;
+  margin-bottom: 15px;
+}

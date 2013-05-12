@@ -36,11 +36,11 @@ $.fn.serializeObject = function()
 };
 
 function updatePreview() {
-  $.post('/cards.html', $('#cardsform').serializeObject(), function(d){ $('.right').html(d); });
+  $.post('/cards.html', $('#cardsform').serializeObject(), function(d){ $('.preview').html(d); });
 }
 
 function resizePreview() {
-  $('.right').height($(window).height() - $('.top').height() - 100);
+  $('.right').height($(window).height()*1.25);
 }
 
 $('textarea').keypress(function(e) {
@@ -97,3 +97,12 @@ $(document).ready(function() {
 });
 
 $(window).resize(resizePreview);
+
+$(document).keypress(
+    function(event){
+     if (event.which == '13') {
+        event.preventDefault();
+      }
+
+
+});

@@ -2,27 +2,36 @@
 %html
   %head
     %title Custom Cards Against Humanity Generator
-    %link{rel: "stylesheet", type: "text/css", href: "/reset.css"}
-    %link{rel: "stylesheet", type: "text/css", href: "/page_styles.css"}
-    %script{src:"//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"}
+    %meta{name:"viewport", content:"width=device-width, initial-scale=1.0"}
+    %link{href:"/css/bootstrap.css", rel:"stylesheet"}
+    %link{href:"/css/flat-ui.css", rel:"stylesheet"}
+    %link{rel: "stylesheet", type: "text/css", href: "/css/page_styles.css"}
 
   %body
 
-    .top
-      %h1 Custom Cards Against
-      %h2 Make your own cards against humanity game
 
     .left
+      .top
+        %h1 Custom Cards Against
+        %h2 Make your own cards against humanity game
+      .seperator
       %form{method: "POST", action: "/cards.pdf", id: "cardsform"}
-        %h3 What's the name of your game?
-        %input{name: "gamename", class: "gamename placeholder"}
-        %h3 Paste in your white cards.
-        %textarea{name: "white_cards", class: "cards placeholder"}
-        %h3 Paste in your black cards.
-        %textarea{name: "black_cards", class: "cards placeholder"}
-        %input{type: "submit", value: "Get the cards!"}
+        .namethegame
+          %h3 What's the name of your game?
+          %input{type: "text", name: "gamename", class: "name placeholder"}
+        .seperator
+        .pastecards.first
+          %h3 Response Cards:
+          %textarea{name: "white_cards", class: "cards placeholder"}
+        .pastecards
+          %h3 Category Cards:
+          %textarea{name: "black_cards", class: "cards placeholder"}
+        .seperator
+        %input.btn.btn-large.btn-block{type: "submit", value: "Download PDF"}
 
     .right
+      .preview
 
     %script{src:"http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"}
-    %script{src:"/main.js"}
+    %script{src:"/js/prefixfree.min.js"}
+    %script{src:"/js/main.js"}
